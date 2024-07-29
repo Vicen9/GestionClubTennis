@@ -1,0 +1,45 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+    <ui:define name="contenido">
+        <section>
+
+            <h3>Socios:</h3>
+            <h:form>
+                <h:dataTable styleClass="table table-striped" var="socio" value="#{crtlSocios.socios}">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        #{socio.idSocio}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                        #{socio.nombre}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Apellidos</f:facet>
+                        #{socio.apellidos}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">DNI</f:facet>
+                        #{socio.dni}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Opciones</f:facet>
+                        <h:button styleClass="btn btn-light" value="Visualiza" outcome="visualiza">
+                            <f:param name="id" value="#{socio.idSocio}"/></h:button>&#160;
+                        <h:button styleClass="btn btn-primary" value="Edita" outcome="edita">
+                            <f:param name="id" value="#{socio.idSocio}"/></h:button>&#160;
+                        <h:commandButton styleClass="btn btn-danger" value="Borra" action="#{crtlSocios.borra(socio)}" />
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

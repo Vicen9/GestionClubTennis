@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+    <context-param>
+        <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+        <!-- Enable verbose error messages -->
+        <param-value>Development</param-value>
+        <!-- Other values: Production, SystemTest, UnitTest -->
+    </context-param>
+
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+
+
+    <data-source>
+    <name>java:global/jdbc/gestTennis</name>
+    <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+    <url>jdbc:h2:~/h2db/clubTennis;MODE=LEGACY;AUTO_SERVER=TRUE</url>
+    <!--         <url>jdbc:h2:mem:dawclub;DB_CLOSE_DELAY=-1</url> -->
+    <user>dawuser</user>
+    <password>dawuser</password>
+    <initial-pool-size>2</initial-pool-size>
+    <max-pool-size>10</max-pool-size>
+    <min-pool-size>5</min-pool-size>
+    </data-source>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+                <http-only>true</http-only>
+                <secure>false</secure>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <security-role>
+        <role-name>ADMINISTRADOR</role-name>
+    </security-role>
+    <security-role>
+        <role-name>SOCIO</role-name>
+    </security-role>
+
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Vistas Socios</web-resource-name>
+            <url-pattern>/tennis/edita.xhtml</url-pattern>
+            <url-pattern>/tennis/reserva.xhtml</url-pattern>
+            <url-pattern>/tennis/torneo.xhtml</url-pattern>
+            <url-pattern>/tennis/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>SOCIO</role-name>
+            <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Vistas Administrador</web-resource-name>
+            <url-pattern>/tennis/crudSocios.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+</web-app>

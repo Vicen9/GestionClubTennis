@@ -1,0 +1,117 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="index.css"/>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Bienvenidos al Club de Tenis de la Universidad de Jaén</h2>
+                    <p>El Club de Tenis es un lugar ideal para aquellos que quieren disfrutar del deporte al aire libre. Contamos con instalaciones de primer nivel y ofrecemos una amplia variedad de actividades para todos los niveles.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-default">
+                        <h5 class="card-header">
+                            Noticias
+                        </h5>
+                        <div class="card-body">
+                                <ul class="card-text">
+                                    <li><a href="#">Inscripciones abiertas para el torneo anual de tenis</a></li>
+                                    <li><a href="#">Nueva pista de tenis cubierta disponible a partir de abril</a></li>
+                                    <li><a href="#">Nuevo entrenador de tenis contratado para el equipo juvenil</a></li>
+                                </ul>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-default">
+                        <h5 class="card-header">
+                            Actividades
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">En el Club de Tenis ofrecemos una amplia variedad de actividades para todos los niveles:</p>
+                            <ul class="card-text">
+                                <li>Torneos de tenis</li>
+                                <li>Clases de tenis para adultos y niños</li>
+                                <li>Clinics de tenis para mejorar tu juego</li>
+                                <li>Eventos sociales para conocer a otros jugadores</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-default">
+                        <h5 class="card-header">
+                            Instalaciones
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">El Club de Tenis cuenta con las siguientes instalaciones:</p>
+                            <ul class="card-text">
+                                <li>10 pistas de tenis</li>
+                                <li>4 pistas de tenis cubiertas</li>
+                                <li>2 pistas de pádel</li>
+                                <li>Gimnasio</li>
+                                <li>Piscina</li>
+                                <li>Restaurante</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Contacto</h3>
+                        <p>Si tienes alguna pregunta o sugerencia, no dudes en contactarnos:</p>
+                        <ul>
+                            <li>Teléfono: 555-1234</li>
+                            <li>Email: info@clubdetenis.com</li>
+                            <li>Dirección: Calle de la Raqueta, 1</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="progress">
+                        <div class="progress-bar w-25 progress-bar-striped">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </ui:define>
+    <ui:insert name="top">
+        <h1>Gestión Club</h1>
+        <c:if test="#{not empty request.remoteUser}">
+            <h:form>
+                <h:commandButton action="#{crtlSocios.logout}" value="Logout #{request.remoteUser}" />
+                <h:commandButton action="#{crtlTorneo.logout}" value="Logout #{request.remoteUser}" />
+            </h:form>
+        </c:if>
+    </ui:insert>
+
+</ui:composition>

@@ -1,0 +1,31 @@
+<ui:composition
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:comp="jakarta.faces.composite/comp">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{crtlPista.pista.id}"/>
+            <f:viewAction action="#{crtlPista.recupera()}" />
+        </f:metadata>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+
+        <section>
+            <h3>Datos de la pista: </h3>
+            <h:messages class="text-danger"/>
+            <ui:fragment  rendered="#{crtlPista.pista != null}"/>
+
+            <!-- use custom composite component -->
+            <comp:pistaVisualiza pistaVisualiza="#{crtlPista.pista}"/>
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

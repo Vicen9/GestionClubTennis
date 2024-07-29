@@ -1,0 +1,39 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+   <ui:define name="contenido">
+      <section>
+         <h3>Tus Reservas</h3>
+         <h:form>
+         <h:dataTable styleClass="table table-striped" var="r" value="#{crtlReserva.dameReservasDeUnSocio()}">
+            <h:column>
+               <f:facet name="header">Numero Pista</f:facet>
+               #{r.idPista}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Fecha</f:facet>
+               <h:outputText value="#{r.fecha}">
+                  <f:convertDateTime type="localDate" pattern="dd/MM/yyyy"/>
+               </h:outputText>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Hora</f:facet>
+               #{r.horaIni}-#{r.horaFin}
+            </h:column>
+
+            <h:column>
+               <h:commandButton styleClass="btn btn-danger" value="Cancelar" action="#{crtlReserva.borra(r.id)}" />
+            </h:column>
+
+         </h:dataTable>
+         </h:form>
+      </section>
+
+   </ui:define>
+
+</ui:composition>

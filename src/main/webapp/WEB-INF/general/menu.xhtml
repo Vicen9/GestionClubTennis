@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ul class="navbar-nav">
+
+        <c:if test="#{request.isUserInRole('SOCIO')}">
+            <li class="nav-item"><h:link value="Inicio" outcome="/tennis/index" class="nav-link"/></li>
+        </c:if>
+
+        <c:if test="#{empty request.remoteUser}">
+            <li class="nav-item"><h:link value="Inicio" outcome="/index" class="nav-link"/></li>
+        </c:if>
+
+        <c:if test="#{request.isUserInRole('ADMINISTRADOR')}">
+            <li class="nav-item"><h:link value="Inicio" outcome="/tennis/index" class="nav-link"/></li>
+        </c:if>
+
+        <c:if test="#{request.isUserInRole('SOCIO')}">
+        <li class="nav-item"><a href="http://localhost:5173/?id=#{crtlInscribir.dameIdSocioActual()}" class="nav-link">Torneo</a> </li>
+        </c:if>
+
+        <c:if test="#{request.isUserInRole('ADMINISTRADOR')}">
+            <li class="nav-item"><a href="http://localhost:5173/?id=#{crtlInscribir.dameIdSocioActual()}" class="nav-link">Torneo</a> </li>
+        </c:if>
+
+        <c:if test="#{empty request.remoteUser}">
+            <li class="nav-item"><h:link value="Torneo" outcome="/tennis/index" class="nav-link"/> </li>
+        </c:if>
+        <li class="nav-item"><h:link value="Quienes somos" outcome="/tennis/quienesSomos" class="nav-link"/></li>
+
+        <li class="nav-item"><h:link value="Reserva" outcome="/tennis/reserva" class="nav-link"/></li>
+
+
+        <c:if test="#{request.isUserInRole('ADMINISTRADOR')}">
+            <li class="nav-item"><h:link value="Lista Socios" outcome="/tennis/crudSocios" class="nav-link"/></li>
+        </c:if>
+
+        <c:if test="#{request.isUserInRole('ADMINISTRADOR')}">
+            <li class="nav-item"><h:link value="Lista Torneos" outcome="/tennis/crudTorneos" class="nav-link"/></li>
+        </c:if>
+
+        <c:if test="#{request.isUserInRole('ADMINISTRADOR')}">
+            <li class="nav-item"><h:link value="Lista Pistas" outcome="/tennis/crudPistas" class="nav-link"/></li>
+        </c:if>
+
+
+        <c:if test="#{not empty request.remoteUser}">
+            <li class="nav-item">
+            <h:form>
+                <h:commandLink action="#{crtlSocios.logout()}" styleClass="nav-link" value="LogOut #{request.remoteUser}"/>
+
+            </h:form>
+            </li>
+        </c:if>
+
+        <c:if test="#{empty request.remoteUser}">
+            <li class="nav-item"><h:link value="Login" outcome="/tennis/index" class="nav-link"/></li>
+        </c:if>
+
+
+        <c:if test="#{empty request.remoteUser}">
+            <li class="nav-item"><h:link value="Registrar" outcome="/tennis/registrar" class="nav-link"/></li>
+        </c:if>
+
+    </ul>
+
+</html>

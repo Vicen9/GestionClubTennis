@@ -1,0 +1,52 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+<ui:define name="cabecera">
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <h:outputScript library="js" name="validaTorneo.js"/>
+</ui:define>
+
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Crea Torneo</h3>
+
+                <h:form id="formTorneo" styleClass="well">
+                    <label>Nombre:</label> <h:inputText styleClass="form-control" label="Nombre" id="nombre"
+                                                        value="#{crtlTorneo.torneo.nombre}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="nombre"/></p>
+                    <p id="errNombre" class="form-text text-danger " style="display:none"  >
+                    </p>
+
+
+                    <label>Descripción:</label> <h:inputText styleClass="form-control" label="Descripción" id="desc"
+                                                             value="#{crtlTorneo.torneo.descripcion}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="desc"/></p>
+                    <p id="errDesc" class="form-text text-danger " style="display:none"  >
+                    </p>
+
+                    <label>Fecha:</label>
+                    <h:inputText p:type="date" styleClass="form-control" label="Fecha" id="fech" value="#{crtlTorneo.torneo.fecha}">
+                        <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="fech" /></p>
+                    <p id="errFechaT" class="form-text text-danger " style="display:none"  >
+                    </p>
+
+                    <h:commandButton styleClass="btn btn-primary" value="Crear" action="#{crtlTorneo.crea()}"/>
+                    <h:button styleClass="btn btn-default" value="Cancelar" outcome="crudTorneos"/>
+                </h:form>
+
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

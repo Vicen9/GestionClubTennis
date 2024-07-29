@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core">
+
+<cc:interface>
+    <cc:attribute name="pistaVisualiza" class="com.example.gestionatennis.model.Pista"/>
+</cc:interface>
+
+
+<cc:implementation>
+    <ul class="panel-body list-group">
+        <li class="list-group-item"><strong>Id:</strong> #{cc.attrs.pistaVisualiza.id}</li>
+        <li class="list-group-item"><strong>Tipo:</strong> #{cc.attrs.pistaVisualiza.tipo}</li>
+        <li class="list-group-item"><strong>Fecha:</strong> #{cc.attrs.pistaVisualiza.fecha}</li>
+        <li class="list-group-item"><strong>Hora:</strong> #{cc.attrs.pistaVisualiza.hora}</li>
+    </ul>
+
+</cc:implementation>
+
+
+
+</html>

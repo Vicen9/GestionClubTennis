@@ -1,0 +1,54 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+    <ui:define name="contenido">
+        <section>
+
+            <h3>Pistas</h3>
+            <h:form>
+                <h:dataTable styleClass="table table-striped" var="pista" value="#{crtlPista.pistas}">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{pista.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Tipo</f:facet>
+                        #{pista.tipo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Fecha</f:facet>
+                        <h:outputText value="#{pista.fecha}">
+                            <f:convertDateTime type="localDate" pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Hora</f:facet>
+                        <h:outputText value="#{pista.hora}">
+                            <f:convertDateTime type="localTime" pattern="HH:mm"/>
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Opciones</f:facet>
+                        <h:button styleClass="btn btn-light" value="Visualiza" outcome="pistaVisualizaD">
+                            <f:param name="id" value="#{pista.id}"/></h:button>&#160;
+                        <h:button styleClass="btn btn-primary" value="Edita" outcome="editaPista">
+                            <f:param name="id" value="#{pista.id}"/></h:button>&#160;
+                        <h:commandButton styleClass="btn btn-danger" value="Borra" action="#{crtlPista.borra(pista)}" />
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+
+        </section>
+
+        <section>
+            <h:button styleClass="btn btn-primary" value="Crear Pista" outcome="creaPista"/>
+        </section>
+
+    </ui:define>
+
+</ui:composition>

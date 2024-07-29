@@ -1,0 +1,49 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{crtlTorneo.torneo.id}"/>
+            <f:viewAction action="#{crtlTorneo.recupera()}" />
+        </f:metadata>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Edita Torneo</h3>
+            <ui:fragment  rendered="#{crtlTorneo.torneo != null}">
+
+                <h:form styleClass="well">
+                    <label>Nombre:</label> <h:inputText styleClass="form-control" label="Nombre" id="nombre"
+                                                        value="#{crtlTorneo.torneo.nombre}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="nombre"/></p>
+
+
+                    <label>Descripción:</label> <h:inputText styleClass="form-control" label="Descripción" id="desc"
+                                                        value="#{crtlTorneo.torneo.descripcion}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="desc"/></p>
+
+                    <label>Fecha:</label>
+                    <h:inputText p:type="date" styleClass="form-control" label="Fecha" id="fech" value="#{crtlTorneo.torneo.fecha}">
+                        <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="fech" /></p>
+
+                    <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{crtlTorneo.guarda()}"/>
+                    <h:button styleClass="btn btn-default" value="Cancelar" outcome="crudTorneos"/>
+                </h:form>
+            </ui:fragment>
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

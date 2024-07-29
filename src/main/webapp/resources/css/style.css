@@ -1,0 +1,33 @@
+
+#content{
+    margin: 1.5em;
+}
+#content2{
+    margin: 1.5em;
+}
+
+/*Apartado Footer*/
+
+footer h4{
+    margin-left: 1em;
+}
+
+#rrss{
+    margin-right: 3em;
+}
+
+#rrss img{
+    max-height: 3em;
+    max-width: 3em;
+    padding: 0.2em;
+}
+
+#rrss img:hover{
+    max-height: 4em;
+    max-width: 4em;
+    padding: 0.2em;
+}
+
+
+
+

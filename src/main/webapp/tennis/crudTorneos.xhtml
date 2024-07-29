@@ -1,0 +1,45 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+<ui:define name="contenido">
+   <section>
+
+      <h3>Torneos</h3>
+      <h:form>
+         <h:dataTable styleClass="table table-striped" var="torneo" value="#{crtlTorneo.torneos}">
+            <h:column>
+               <f:facet name="header">Nombre</f:facet>
+               #{torneo.nombre}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Fecha</f:facet>
+               #{torneo.fecha}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Descripción</f:facet>
+               #{torneo.descripcion}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Opciones</f:facet>
+               <h:button styleClass="btn btn-light" value="Visualiza" outcome="torneoVisualizaD">
+                  <f:param name="id" value="#{torneo.id}"/></h:button>&#160;
+               <h:button styleClass="btn btn-primary" value="Edita" outcome="editaTorneo">
+                  <f:param name="id" value="#{torneo.id}"/></h:button>&#160;
+               <h:commandButton styleClass="btn btn-danger" value="Borra" action="#{crtlTorneo.borra(torneo)}" />
+            </h:column>
+         </h:dataTable>
+      </h:form>
+
+   </section>
+
+   <section>
+      <h:button styleClass="btn btn-primary" value="Crear Torneo" outcome="creaTorneo"/>
+   </section>
+
+</ui:define>
+
+        </ui:composition>

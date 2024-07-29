@@ -1,0 +1,47 @@
+<ui:composition
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+   <ui:define name="metadata">
+      <f:metadata>
+         <f:viewParam name="id" value="#{crtlReserva.idPista}"/>
+      </f:metadata>
+   </ui:define>
+
+
+   <ui:define name="contenido">
+   <div id="cont">
+      <div id="datep">
+         <h4 class="ui-datepicker-title">Seleccione la Fecha</h4>
+         <h:form styleClass="form-floating">
+            <p:datePicker value="#{crtlReserva.fechaR}"/>
+            <h:commandButton styleClass="btn btn-primary" type="submit" value="Seleccionar Fecha"/>
+         </h:form>
+      </div>
+      <c:if test="#{not empty crtlReserva.fechaR}">
+            <div class="container-fluid form-check">
+               <div class="row">
+                  <c:forEach var="r" items="#{crtlReserva.reservasTotales()}">
+                     <div class="col-md-4">
+                        <h:form>
+                           <h:commandButton type="button" styleClass="btn btn-outline-danger" rendered="#{crtlReserva.buscaReserva(r) == false}" value="#{r.horaIni}-#{r.horaFin}"/>
+                           <h:commandButton type="submit" styleClass="btn btn-outline-secondary" action="#{crtlReserva.crea(r)}" rendered="#{crtlReserva.buscaReserva(r)}" value="#{r.horaIni}-#{r.horaFin}"/>
+                        </h:form>
+                     </div>
+                  </c:forEach>
+
+               </div>
+            </div>
+      </c:if>
+
+
+
+
+   </div>
+   </ui:define>
+
+</ui:composition>

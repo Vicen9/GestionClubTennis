@@ -1,0 +1,116 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+    <ui:define name="cabecera">
+        <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <h:outputScript library="js" name="validaSocio.js"/>
+    </ui:define>
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Registrar</h3>
+            <h:form styleClass="well" id="fRegistra">
+                <label>Nombre:</label> <h:inputText styleClass="form-control" label="Nombre" id="idNombre"
+                                                        value="#{crtlSocios.socio.nombre}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="idNombre"/></p>
+                <p id="errNombre" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+
+                <label>Apellidos:</label> <h:inputText styleClass="form-control" label="Apellidos" id="idApellidos"
+                                                        value="#{crtlSocios.socio.apellidos}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="idApellidos"/></p>
+                <p id="errApellidos" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+                <label>DNI:</label> <h:inputText styleClass="form-control" label="Dni" id="idDni"
+                                                           value="#{crtlSocios.socio.dni}" required="true">
+                </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="idDni"/></p>
+                <p id="errDNI" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+                <label>Telefono:</label> <h:inputText p:type="number" styleClass="form-control" label="telefono" id="idTelefono"
+                                                 value="#{crtlSocios.socio.telefono}">
+                    </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idTelefono"/></p>
+                <p id="errTlf" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+                <label>Direccion:</label> <h:inputText styleClass="form-control" label="direccion" id="direccion"
+                                                 value="#{crtlSocios.socio.direccion}" required="true">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="direccion"/></p>
+                <p id="errDireccion" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+            <label>Fecha Nacimiento:</label>
+                <h:inputText p:type="date" styleClass="form-control" label="FNac" id="idFNac" value="#{crtlSocios.socio.fechaNacimiento}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idFNac" /></p>
+                <p id="errFecha" class="form-text text-danger " style="display:none"  >
+                </p>
+
+            <label>Email:</label><h:inputText p:type="email" styleClass="form-control" label="email" id="email" value="#{crtlSocios.socio.email}"/>
+                <p><h:message styleClass="form-text text-danger" for="email"/></p>
+                <p id="errEmail" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+                <label>Nivel:</label><h:inputText p:type="number" styleClass="form-control" label="nivel" id="idnivel" value="#{crtlSocios.socio.nivel}">
+                </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idnivel"/></p>
+                <p id="errNivel" class="form-text text-danger " style="display:none"  >
+                </p>
+
+
+                <label class="form-check-label">Sexo:</label>
+                <div class="form-check">
+                    <h:selectOneRadio value="#{crtlSocios.socio.sexo}">
+                        <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="Femenino" itemLabel="Femenino"/>
+                        <f:selectItem itemValue="Otro" itemLabel="Otro"/>
+                    </h:selectOneRadio>
+                </div>
+
+                <label class="form-check-label">Medio de Pago:</label>
+                <div class="form-label">
+                    <h:selectOneMenu value="#{crtlSocios.socio.mediodePago}">
+                        <f:selectItem itemLabel="Visa" itemValue="Visa"/>
+                        <f:selectItem itemLabel="Paypal" itemValue="Paypal"/>
+                        <f:selectItem itemLabel="Domiciliacion" itemValue="Domiciliacion"/>
+                    </h:selectOneMenu>
+                </div>
+
+
+                <label>Contraseña:</label> <h:inputSecret styleClass="form-control" label="Password" id="pass"
+                                                       value="#{crtlSocios.socio.password}" required="true">
+            </h:inputSecret>
+                <p><h:message styleClass="form-text text-danger" for="pass"/></p>
+                <p id="errPass" class="form-text text-danger " style="display:none"  >
+                </p>
+
+                <h:commandButton type="submit" styleClass="btn btn-primary" value="Guardar" action="#{crtlSocios.crea()}"/>
+                <h:button styleClass="btn btn-default" value="Cancelar" outcome="registrar"/>
+            </h:form>
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

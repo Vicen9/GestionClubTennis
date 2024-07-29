@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Vicen
+  Date: 13/03/2023
+  Time: 12:00
+-->
+
+<ui:composition
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+<ui:define name="content">
+    <h2>Login</h2>
+    <h:panelGroup rendered="#{param.error!=null}">
+        <p class="alert alert-danger">Error de autenticación</p>
+    </h:panelGroup>
+    <form action="j_security_check" method="POST">
+        <label>Usuario</label><input class="form-control" type="text" name="j_username"/>
+        <label>Contraseña</label><input class="form-control" type="password" name="j_password"/>
+        <input class="btn btn-primary" type="submit" value="Login"/>
+    </form>
+</ui:define>
+
+</ui:composition>

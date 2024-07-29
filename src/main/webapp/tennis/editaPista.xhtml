@@ -1,0 +1,48 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{crtlPista.pista.id}"/>
+            <f:viewAction action="#{crtlPista.recupera()}" />
+        </f:metadata>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Edita Pista</h3>
+            <ui:fragment  rendered="#{crtlPista.pista != null}">
+
+                <h:form styleClass="well">
+                    <label>Tipo:</label>
+                    <h:inputText styleClass="form-control" label="Tipo" id="tipo" value="#{crtlPista.pista.tipo}"/>
+                    <p><h:message styleClass="form-text text-danger" for="fech" /></p>
+
+                    <label>Fecha:</label>
+                    <h:inputText p:type="date" styleClass="form-control" label="Fecha" id="fech" value="#{crtlPista.pista.fecha}">
+                        <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="fech" /></p>
+
+                    <label>Hora:</label>
+                    <h:inputText p:type="time" styleClass="form-control" label="Hora" id="hora" value="#{crtlPista.pista.hora}">
+                        <f:convertDateTime type="localTime" pattern="HH:mm" />
+                    </h:inputText>
+                    <p><h:message styleClass="form-text text-danger" for="hora" /></p>
+
+                    <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{crtlPista.guarda()}"/>
+                    <h:button styleClass="btn btn-default" value="Cancelar" outcome="crudPistas"/>
+                </h:form>
+            </ui:fragment>
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

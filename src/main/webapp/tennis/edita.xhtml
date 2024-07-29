@@ -1,0 +1,111 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{crtlSocios.socio.idSocio}"/>
+            <f:viewAction action="#{crtlSocios.recupera()}" />
+        </f:metadata>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Edita</h3>
+            <ui:fragment  rendered="#{crtlSocios.socio != null}">
+
+            <h:form styleClass="well">
+                <label>Nombre:</label> <h:inputText styleClass="form-control" label="Nombre" id="idNombre"
+                                                    value="#{crtlSocios.socio.nombre}" required="true">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idNombre"/></p>
+
+
+
+                <label>Apellidos:</label> <h:inputText styleClass="form-control" label="Apellidos" id="idApellidos"
+                                                       value="#{crtlSocios.socio.apellidos}" required="true">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idApellidos"/></p>
+
+
+                <label>DNI:</label> <h:inputText styleClass="form-control" label="Dni" id="idDni"
+                                                 value="#{crtlSocios.socio.dni}" required="true">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idDni"/></p>
+
+
+                <label>Telefono:</label> <h:inputText p:type="number" styleClass="form-control" label="telefono" id="idTelefono"
+                                                      value="#{crtlSocios.socio.telefono}">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idTelefono"/></p>
+
+
+                <label>Direccion:</label> <h:inputText styleClass="form-control" label="direccion" id="direccion"
+                                                       value="#{crtlSocios.socio.direccion}" required="true">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="direccion"/></p>
+
+
+                <label>Fecha Nacimiento:</label>
+                <h:inputText p:type="date" styleClass="form-control" label="FNac" id="idFNac" value="#{crtlSocios.socio.fechaNacimiento}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idFNac" /></p>
+
+                <label>Email:</label><h:inputText p:type="email" styleClass="form-control" label="email" id="email" value="#{crtlSocios.socio.email}"/>
+                <p><h:message styleClass="form-text text-danger" for="email"/></p>
+
+
+                <label>Nivel:</label><h:inputText p:type="number" styleClass="form-control" label="nivel" id="idnivel" value="#{crtlSocios.socio.nivel}">
+            </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="idnivel"/></p>
+
+                <label class="form-check-label">Medio de Pago:</label>
+                <div class="form-label">
+                    <h:selectOneMenu value="#{crtlSocios.socio.mediodePago}">
+                        <f:selectItem itemLabel="Visa" itemValue="Visa"/>
+                        <f:selectItem itemLabel="Paypal" itemValue="Paypal"/>
+                        <f:selectItem itemLabel="Domiciliacion" itemValue="Domiciliacion"/>
+                    </h:selectOneMenu>
+                </div>
+
+
+                <label>Contraseña:</label> <h:inputHidden styleClass="form-control" label="Password" id="password"
+                                                          value="#{crtlSocios.socio.password}" required="true">
+            </h:inputHidden>
+                <p><h:message styleClass="form-text text-danger" for="password"/></p>
+
+
+                <label>Rol:</label>
+                <div class="form-label">
+                    <h:selectOneMenu value="#{crtlSocios.socio.rol}">
+                        <f:selectItem itemLabel="Socio" itemValue="SOCIO"/>
+                        <f:selectItem itemLabel="Administrador" itemValue="ADMINISTRADOR"/>
+                    </h:selectOneMenu>
+                </div>
+
+
+                <label class="form-check-label">Sexo:</label>
+                <div class="form-check">
+                    <h:selectOneRadio value="#{crtlSocios.socio.sexo}">
+                        <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="Femenino" itemLabel="Femenino"/>
+                        <f:selectItem itemValue="Otro" itemLabel="Otro"/>
+                    </h:selectOneRadio>
+                </div>
+
+                <h:commandButton styleClass="btn btn-primary" value="Guardar" action="#{crtlSocios.guarda()}"/>
+                <h:button styleClass="btn btn-default" value="Cancelar" outcome="crudSocios"/>
+            </h:form>
+            </ui:fragment>
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core">
+
+<cc:interface>
+   <cc:attribute name="torneo" class="com.example.gestionatennis.model.Torneo"/>
+</cc:interface>
+
+
+<cc:implementation>
+   <div class="card">
+      <h:graphicImage alt="Imagen no disponible" height="300em" library="images" name="tenis.jpg" styleClass="card-img-top"/>
+      <div class="card-body">
+         <h5 class="card-title">#{cc.attrs.torneo.nombre}</h5>
+         <h6 class="card-subtitle">
+            <h:outputText value="#{cc.attrs.torneo.fecha}">
+               <f:convertDateTime type="localDate" dateStyle="short" />
+            </h:outputText>
+         </h6>
+         <p class="card-text">#{cc.attrs.torneo.descripcion}</p>
+
+
+         <h:form name="nameForm#{cc.attrs.torneo.id}" id="idForm#{cc.attrs.torneo.id}">
+            <h:inputHidden value="#{crtlInscribir.dameIdSocioActual()}"/>
+            <h:inputHidden value="#{cc.attrs.torneo.id}"/>
+            <h:commandButton type="submit" class="btn btn-primary" value="Inscribir"/>
+         </h:form>
+
+
+
+      </div>
+   </div>
+
+</cc:implementation>
+
+
+
+</html>

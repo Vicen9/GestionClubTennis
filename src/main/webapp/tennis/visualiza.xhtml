@@ -1,0 +1,31 @@
+<ui:composition
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:comp="jakarta.faces.composite/comp">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{crtlSocios.socio.idSocio}"/>
+            <f:viewAction action="#{crtlSocios.recupera()}" />
+        </f:metadata>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+
+        <section>
+            <h3>Tus datos son: </h3>
+            <h:messages class="text-danger"/>
+            <ui:fragment  rendered="#{crtlSocios.socio != null}"/>
+
+            <!-- use custom composite component -->
+            <comp:socio value="#{crtlSocios.socio}"/>
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

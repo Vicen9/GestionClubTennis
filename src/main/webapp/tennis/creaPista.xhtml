@@ -1,0 +1,52 @@
+<ui:composition
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:p="jakarta.faces.passthrough"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+    <ui:define name="cabecera">
+        <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <h:outputScript library="js" name="validaPista.js"/>
+    </ui:define>
+
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Crea Pista</h3>
+
+            <h:form id="formPista" styleClass="well">
+                <label>Tipo:</label>
+                <h:inputText styleClass="form-control" label="Tipo" id="tipo" value="#{crtlPista.pista.tipo}"/>
+                <p><h:message styleClass="form-text text-danger" for="tipo" /></p>
+                <p id="errTipo" class="form-text text-danger " style="display:none"  >
+                </p>
+                
+                <label>Fecha:</label>
+                <h:inputText p:type="date" styleClass="form-control" label="Fecha" id="fecha" value="#{crtlPista.pista.fecha}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="fecha" /></p>
+                <p id="errFecha" class="form-text text-danger " style="display:none"  >
+                </p>
+
+                <label>Hora:</label>
+                <h:inputText p:type="time" styleClass="form-control" label="Hora" id="hora" value="#{crtlPista.pista.hora}">
+                    <f:convertDateTime type="localTime" pattern="HH:mm" />
+                </h:inputText>
+                <p><h:message styleClass="form-text text-danger" for="hora" /></p>
+                <p id="errHora" class="form-text text-danger " style="display:none"  >
+                </p>
+
+                <h:commandButton styleClass="btn btn-primary" value="Crear" action="#{crtlPista.crea()}"/>
+                <h:button styleClass="btn btn-default" value="Cancelar" outcome="crudPistas"/>
+            </h:form>
+
+
+
+        </section>
+
+    </ui:define>
+
+</ui:composition>

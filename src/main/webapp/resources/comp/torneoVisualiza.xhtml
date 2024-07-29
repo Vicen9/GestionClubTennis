@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core">
+
+<cc:interface>
+    <cc:attribute name="torneoVisualiza" class="com.example.gestionatennis.model.Torneo"/>
+</cc:interface>
+
+
+<cc:implementation>
+    <ul class="panel-body list-group">
+        <li class="list-group-item"><strong>ID:</strong> #{cc.attrs.torneoVisualiza.id}</li>
+        <li class="list-group-item"><strong>Nombre:</strong> #{cc.attrs.torneoVisualiza.nombre}</li>
+        <li class="list-group-item"><strong>Fecha:</strong> #{cc.attrs.torneoVisualiza.fecha}</li>
+        <li class="list-group-item"><strong>Descripción:</strong> #{cc.attrs.torneoVisualiza.descripcion}</li>
+    </ul>
+
+</cc:implementation>
+
+
+
+</html>

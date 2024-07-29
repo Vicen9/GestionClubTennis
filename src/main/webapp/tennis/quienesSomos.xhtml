@@ -1,0 +1,28 @@
+<ui:composition
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html" xmlns:pf="http://primefaces.org/ui"
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml">
+
+
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="quienesSomos.css"/>
+        <pf:accordionPanel widgetVar="basic">
+        <section>
+            <pf:tab title="Quienes somos">
+            <p>Somos una empresa dedicada a ofrecer servicios y formar nuevos talentos en el tenis.</p>
+            <p>Desde nuestros inicios en 2022, hemos trabajado incansablemente para mejorar la calidad de las personas a través de nuestras enseñanzas y servicios de alta calidad.</p>
+            <p>Valoramos la satisfacción del tenista por encima de todo y nos esforzamos por ofrecer el mejor servicio posible en cada una de nuestras áreas de especialización.</p>
+            </pf:tab>
+            <pf:tab title="Nuestro Equipo">
+            <p>Vicente Castellano Gomez: Jefe de la empresa y director técnico de gestión de profesores</p>
+            <p>Jose Manuel Gamarra Espinar:Jefe de la empresa y director de gestión de socios y pistas</p>
+                <pf:avatar styleClass="mr-2" shape="circle">
+                    <h:graphicImage library="images" name="jose.png"/>
+                </pf:avatar>
+            </pf:tab>
+        </section>
+        </pf:accordionPanel>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns:h="jakarta.faces.html" xmlns:ui="jakarta.faces.facelets" xmlns:pf="http://primefaces.org/ui" xmlns:c="jakarta.tags.core">
+
+<h:head>
+    <ui:insert name="cabecera"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</h:head>
+
+<h:body>
+
+    <main>
+
+        <header>
+            <ui:include src="/WEB-INF/general/encabezado.xhtml"></ui:include>
+
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ui:include src="/WEB-INF/general/menu.xhtml"></ui:include>
+        </nav>
+
+        <div id="content">
+            <ui:insert name="contenido"/>
+        </div>
+        <div id="content2">
+            <ui:insert name="content"/>
+        </div>
+        <footer class="bg-light d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <ui:include src="/WEB-INF/general/footer.xhtml"></ui:include>
+            <c:if test="#{not empty prefs.ultimoTorneo}">
+                <hr/><p>Ultimo torneo: #{prefs.ultimoTorneo}</p>
+            </c:if>
+        </footer>
+
+    </main>
+</h:body>
+
+</html>

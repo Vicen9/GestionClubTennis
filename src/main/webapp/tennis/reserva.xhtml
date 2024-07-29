@@ -1,0 +1,29 @@
+<ui:composition
+        template="/WEB-INF/templates/plantillaPrincipal.xhtml"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:co="jakarta.faces.composite/comp">
+
+    <ui:define name="contenido">
+        <section>
+            <h3>Reservar Pistas</h3>
+            <h:button styleClass="btn btn-danger" value="Cancelar Reserva" outcome="cancelaReserva"/>
+        </section>
+
+        <div class="container-fluid">
+            <div class="row">
+                <ui:repeat var="pis" value="#{crtlPista.pistas}">
+                    <div class="col-md-4">
+                        <co:pista pista="#{pis}"/>
+                    </div>
+
+                </ui:repeat>
+            </div>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

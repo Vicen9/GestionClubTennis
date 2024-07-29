@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core">
+
+<cc:interface>
+    <cc:attribute name="value" class="com.example.gestionatennis.model.Socio"/>
+</cc:interface>
+
+
+<cc:implementation>
+    <ul class="panel-body list-group">
+
+        <li class="list-group-item"><strong>DNI:</strong> #{cc.attrs.value.dni}</li>
+        <li class="list-group-item"><strong>Nombre:</strong> #{cc.attrs.value.nombre}</li>
+        <li class="list-group-item"><strong>Apellidos:</strong> #{cc.attrs.value.apellidos}</li>
+        <li class="list-group-item"><strong>Telefono:</strong> #{cc.attrs.value.telefono}</li>
+        <li class="list-group-item"><strong>Dirección:</strong> #{cc.attrs.value.direccion}</li>
+        <li class="list-group-item"><strong>Email:</strong> #{cc.attrs.value.email}</li>
+        <li class="list-group-item"><strong>Nivel:</strong> #{cc.attrs.value.nivel}</li>
+        <li class="list-group-item"><strong>Medio de Pago:</strong> #{cc.attrs.value.mediodePago}</li>
+        <li class="list-group-item"><strong>Sexo:</strong> #{cc.attrs.value.sexo}</li>
+        <li class="list-group-item"><strong>Rol:</strong> #{cc.attrs.value.rol}</li>
+        <li class="list-group-item"><strong>Fecha nacimiento: </strong>
+            <h:outputText value="#{cc.attrs.value.fechaNacimiento}">
+                <f:convertDateTime type="localDate" dateStyle="long" />
+            </h:outputText>
+        </li>
+    </ul>
+
+</cc:implementation>
+</html>
