@@ -1,6 +1,3 @@
-## Autor
-* Vicente Castellano Gomez, vicentecastellano65@gmail.com - vcg00025@red.ujaen.es
-
 # Descripción
 
 Este proyecto es un ejemplo de aplicación web CRUD desarrollada para la gestión de un club de tenis, permitiendo administrar socios, reservas de pistas y eventos. Está construido utilizando **Jakarta Faces** para la interfaz de usuario, **Vue.js** para interactividad en el frontend, y **Java** para la lógica de negocio. El proyecto está estructurado y gestionado con **Maven**, asegurando una integración fluida de todas las dependencias y plugins necesarios.
@@ -41,4 +38,7 @@ Este proyecto es un ejemplo de aplicación web CRUD desarrollada para la gestió
 3. Configura la base de datos en el archivo `application.properties`.
 4. Ejecuta la aplicación con Maven: `mvn clean install` y luego `mvn spring-boot:run`.
 5. Accede a la aplicación en `http://localhost:8080`.
+
+## Autor
+* Vicente Castellano Gomez, vicentecastellano65@gmail.com - vcg00025@red.ujaen.es
 
